@@ -22,7 +22,7 @@ function game(numberOfRounds) {
             console.log("Player cancelled the game.")
             break;
         } else if (!playerSelection) {
-            console.log("Player input is not appropiate.")
+            console.log(`Player input is not appropiate. Round ${i}.`)
         } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
             console.log(`It's a draw. Round ${i}.`);
         } else if (
@@ -43,4 +43,4 @@ function game(numberOfRounds) {
 game(numberOfRounds);
 
 
-console.log("ok")
+alert("Play another game!")
