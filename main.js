@@ -43,4 +43,11 @@ function playRound() {
 
 }
 
-playRound();
+function game(num) {
+    for (let i = 1; i < num; num++) {
+            playRound();
+    }
+    
+};
+
+game(5);
