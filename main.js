@@ -49,3 +49,5 @@ function game(numberOfRounds) {
 
 game(numberOfRounds);
 
+
+console.log("ok")
