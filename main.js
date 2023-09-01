@@ -5,7 +5,7 @@ function game(numberOfRounds) {
 
     for (let i = 1; i <= numberOfRounds; i++) {
 
-        const playerSelection = prompt("Which do you choose: Rock, Paper, Scissors?", 0)
+        const playerSelection = prompt("Which do you choose: Rock, Paper, Scissors?")
         console.log(`player selection: ${playerSelection}`);
 
         function getComputerChoice() {
@@ -18,7 +18,11 @@ function game(numberOfRounds) {
 
         console.log(`computer selection: ${computerSelection}`);
 
-        if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
+        if (playerSelection === null) {
+            console.log("Player cancelled the game.")
+        } else if (!playerSelection) {
+            console.log("Player input is not appropiate.")
+        } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
             console.log("It's a draw" + i);
         } else if (playerSelection === "rock" || playerSelection === "Rock" || playerSelection === "ROCK") {
             if (computerSelection === "Scissors") {
@@ -38,9 +42,11 @@ function game(numberOfRounds) {
             } else {
                 console.log("You won! Scissors beat paper");
             }
-        }
+        }  
     }
 }
 
 
 game(numberOfRounds);
+
+console.log("Play another game") // Wont show as we have a Typeerror
