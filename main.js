@@ -20,32 +20,27 @@ function game(numberOfRounds) {
 
         if (playerSelection === null) {
             console.log("Player cancelled the game.")
+            break;
         } else if (!playerSelection) {
-            console.log("Player input is not appropiate.")
+            console.log(`Player input is not appropiate. Round ${i}.`)
         } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-            console.log("It's a draw" + i);
-        } else if (playerSelection === "rock" || playerSelection === "Rock" || playerSelection === "ROCK") {
-            if (computerSelection === "Scissors") {
-                console.log("You won! Rock beats scissors.");
-            } else {
-                console.log("You lost! Paper beats rock.");
-            }
-        } else if (playerSelection === "paper" || playerSelection === "Paper" || playerSelection === "PAPER") {
-            if (computerSelection === "Scissors") {
-                console.log("You lost! Scissors beat paper");
-            } else {
-                console.log("You won! Paper beats rock.");
-            }
-        } else if (playerSelection === "scissors" || playerSelection === "Scissors" || playerSelection === "SCISSORS") {
-            if (computerSelection == "Rock") {
-                console.log("You lost! Rock beats scissors.");
-            } else {
-                console.log("You won! Scissors beat paper");
-            }
-        }  
+            console.log(`It's a draw. Round ${i}.`);
+        } else if (
+            (playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
+            (playerSelection.toLowerCase() === "paper" && computerSelection === "Rock") ||
+            (playerSelection.toLowerCase() === "scissors" && computerSelection === "Paper")
+        ) {
+            console.log(`You won! ${playerSelection} beats ${computerSelection}. Round ${i}.`);
+        } else {
+            console.log(`You lost. ${computerSelection} beats ${playerSelection}. Round ${i}.`)
+        }
+
+
     }
 }
 
 
 game(numberOfRounds);
 
+
+alert("Play another game!")
