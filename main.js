@@ -49,4 +49,3 @@ function game(numberOfRounds) {
 
 game(numberOfRounds);
 
-console.log("Play another game") // Wont show as we have a Typeerror
