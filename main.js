@@ -1,46 +1,75 @@
+const buttons = document.querySelectorAll('button[id^="btn"]');
+const resultMsg = document.getElementById("resultMessage")
+const playerScoreField = document.getElementById("playerScoreField")
+const computerScoreField = document.getElementById("computerScoreField")
+const resetButton = document.getElementById("reset")
+let playerScore = 0;
+let computerScore = 0;
 
-let numberOfRounds = 5;
 
-function game(numberOfRounds) {
+buttons.forEach(button => button.addEventListener('click', handleClick))
+resetButton.addEventListener('click', resetGame);
 
-    for (let i = 1; i <= numberOfRounds; i++) {
+function handleClick(e) {
+    let playerSelection = e.target.innerHTML
+    const computerSelection = getComputerChoice();
+    playGame(playerSelection, computerSelection);
+    isWinner();
+}
 
-        const playerSelection = prompt("Which do you choose: Rock, Paper, Scissors?")
-        console.log(`player selection: ${playerSelection}`);
+function getComputerChoice() {
+    let choices = ["rock", "paper", "scissors"]
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
 
-        function getComputerChoice() {
-            let choices = ["Rock", "Paper", "Scissors"]
-            let index = Math.floor(Math.random() * choices.length);
+function playGame(playerSelection, computerSelection) {
 
-            return choices[index];
-        }
-        const computerSelection = getComputerChoice();
 
-        console.log(`computer selection: ${computerSelection}`);
+    if (playerSelection === computerSelection) {
+        resultMsg.textContent = `Computer selected ${computerSelection}.It's a draw.`;
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+        playerScore++;
+        playerScoreField.textContent = playerScore;
+        resultMsg.textContent = `You won! ${playerSelection.charAt(0).toUpperCase()}${playerSelection.slice(1)} beats ${computerSelection}.`
+        // console.log(`The character at index 0   is '${anyString.charAt(0)}'`);
+    } else {
+        computerScore++;
+        computerScoreField.textContent = computerScore;
+        resultMsg.textContent = `You lost. ${computerSelection.charAt(0).toUpperCase()}${computerSelection.slice(1)} beats ${playerSelection}.`
+    }
 
-        if (playerSelection === null) {
-            console.log("Player cancelled the game.")
-            break;
-        } else if (!playerSelection) {
-            console.log(`Player input is not appropiate. Round ${i}.`)
-        } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-            console.log(`It's a draw. Round ${i}.`);
-        } else if (
-            (playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
-            (playerSelection.toLowerCase() === "paper" && computerSelection === "Rock") ||
-            (playerSelection.toLowerCase() === "scissors" && computerSelection === "Paper")
-        ) {
-            console.log(`You won! ${playerSelection} beats ${computerSelection}. Round ${i}.`);
-        } else {
-            console.log(`You lost. ${computerSelection} beats ${playerSelection}. Round ${i}.`)
-        }
+}
 
+function isWinner() {
+
+    if (playerScore === 5) {
+        resultMsg.textContent = "Well done mate!"
+        buttons.forEach(button => button.disabled = true)
+    } else if (computerScore === 5) {
+        resultMsg.textContent = "Better play an easier game? Huh!?"
+        buttons.forEach(button => button.disabled = true)
+    }
+
+}
+
+function resetGame() {
+    if (playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreField.innerHTML = playerScore;
+        computerScoreField.innerHTML = computerScore;
+        buttons.forEach(button => button.disabled = false)
 
     }
 }
 
 
-game(numberOfRounds);
 
 
-alert("Play another game!")
+
+
