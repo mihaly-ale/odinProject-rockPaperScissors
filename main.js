@@ -43,16 +43,19 @@ function playGame(playerSelection, computerSelection) {
         resultMsg.textContent = `You lost. ${computerSelection.charAt(0).toUpperCase()}${computerSelection.slice(1)} beats ${playerSelection}.`
     }
 
+   
 }
 
 function isWinner() {
 
     if (playerScore === 5) {
-        resultMsg.textContent = "Well done mate!"
-        buttons.forEach(button => button.disabled = true)   
+        resultMsg.textContent = "Well done mate!";
+        buttons.forEach(button => button.disabled = true);
+        resetButton.style.display = "inline-block";   
     } else if (computerScore === 5) {
-        resultMsg.textContent = "Better play an easier game? Huh!?"
-        buttons.forEach(button =>button.disabled = true)   
+        resultMsg.textContent = "Better play an easier game? Huh!?";
+        buttons.forEach(button =>button.disabled = true) ;
+        resetButton.style.display = "inline-block";  
     }
 
 }
@@ -64,6 +67,7 @@ function resetGame() {
         playerScoreField.innerHTML = playerScore;
         computerScoreField.innerHTML = computerScore;
         buttons.forEach(button => button.disabled = false)
+        resetButton.style.display = "none";
 
     }
 }
