@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('button[id^="btn"]');
+const buttons = document.querySelectorAll('input[id^="btn"]');
 const resultMsg = document.getElementById("resultMessage")
 const playerScoreField = document.getElementById("playerScoreField")
 const computerScoreField = document.getElementById("computerScoreField")
@@ -11,6 +11,7 @@ buttons.forEach(button => button.addEventListener('click', handleClick))
 resetButton.addEventListener('click', resetGame);
 
 function handleClick(e) {
+    console.log(e.target.dataset.name)
     let playerSelection = e.target.innerHTML
     const computerSelection = getComputerChoice();
     playGame(playerSelection, computerSelection);
