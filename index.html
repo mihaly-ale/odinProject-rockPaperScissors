@@ -20,20 +20,28 @@
                 <div>Computer: <span id="computerScoreField">0</span></div>
             </div>
             <div class="buttons">
-                <input type="image" id="btn-rock" data-name="rock" alt="rock" src="/images/rocks.png"/>
-                <input type="image" id="btn-paper" data-name="paper" alt="paper" src="/images/paper.png"/>
-                <input type="image" id="btn-scissors" data-name="scissors" alt="scissors" src="/images/scissors.png"/>                
+                <input type="image" class="game-buttons" id="btn-rock" data-name="rock" alt="rock" src="/images/rocks.png"/>
+                <input type="image" class="game-buttons" id="btn-paper" data-name="paper" alt="paper" src="/images/paper.png"/>
+                <input type="image" class="game-buttons" id="btn-scissors" data-name="scissors" alt="scissors" src="/images/scissors.png"/>                
             </div>
-            <div class="message">
-                <h2 id = resultMessage></h2>
-                <button class="reset" id="reset">Let's play another game!</button>
-            </div>
+            <h2 id = resultMessage></h2>
+            <dialog class="modal" id="modal">
+                <p class="endMessage" id="endMessage">Well Done!</p>
+                <button class="reset-button" id="reset-button">"Just ... one ...  more ... turn"</button>
+                <button class="close-button" id="close-button">X</button>
+            </dialog>
         </section>
     </div>
     
     <footer>
-        <p> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></p>
+        <p> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.</p>
     </footer>
     <script src="main.js"></script>
 </body>
 </html>
+
+<!-- todos 
+-cretae modal for end message and rest buttons
+responsive mobile first
+
+-->
