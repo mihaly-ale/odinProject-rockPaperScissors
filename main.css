@@ -7,13 +7,18 @@
 }
 
 body {
-    background-color: slateblue;
+    background-color: rgb(50, 38, 128);
     font-family: Arial, Helvetica, sans-serif;
     color: aliceblue;
     /*  to push down the footer */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+input[type^="image"] {
+    max-width: 100%;
+    height: auto;
 }
 
 a {
@@ -30,15 +35,14 @@ a {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1100px;
+    /* display: flex;
+    flex-direction: column; */
     margin: 0 auto;
     text-align: center;
 }
 
 .header {
-    margin: 3rem 0;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -49,10 +53,13 @@ a {
 
     & h2 {
         font-size: 1.5rem;
+        padding-bottom: 2rem;
     }
 
     &:after {
         content: "";
+        left: 0;
+        bottom: 3rem;
         width: 100vw;
         display: block;
         border-bottom: 1px solid aliceblue;
@@ -62,23 +69,27 @@ a {
 .game {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .points {
     display: flex;
     justify-content: space-around;
+    font-size: 2rem;
+    margin-top: 4rem;
+
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
+    justify-content: center;;
+  
     gap: 5rem;
 
-    @media (max-width: 750px) {
-        flex-direction: column;
-        gap: 1.5rem;
-
+    @media (max-width: 750px) {  
+        display: grid;
+        place-items: center;
+        gap: 1.5rem;  
     }
 }
 
@@ -103,54 +114,55 @@ a {
 }
 
 .modal {
-    background-color:rgb(182, 213, 241);
-    width: 50%;
-    margin:auto;
-    height: 15rem;   
+    background-color: aliceblue;
+    width: 30ch;
+    margin: auto;
+    height: fit-content;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    border: 3px solid slateblue;
+    border: 3px solid rgb(50, 38, 128);
     border-radius: 5px;
     position: relative;
-    
+
 }
 
 .reset-button {
     width: fit-content;
     height: 4rem;
-    background-color: slateblue;
+    background-color: rgb(50, 38, 128);
     color: aliceblue;
     font-size: 1.25rem;
-    margin-top: 2rem;
-    padding: .5em 1em;
+    margin-block: 2rem;
+    padding: .25em 1.25em;
     outline: 2px solid aliceblue;
     outline-offset: -4px;
     border-radius: 5px;
-    cursor: pointer;     
+    cursor: pointer;
 }
 
 .endMessage {
     margin-top: 2.5rem;
-    font-size: 2.5rem;
-    color: slateblue;
+    font-size: 1.5rem;
+    color: rgb(50, 38, 128);
 }
 
 .close-button {
-    position: absolute; 
+    position: absolute;
     top: 0px;
-    right: 0px; 
-    background-color: transparent ;
+    right: 0px;
+    background-color: transparent;
     font-size: 1.25rem;
-    color: black;
+    font-weight: 700;
+    color: rgb(120, 23, 23);
     border: none;
     padding: .75rem 1.25rem;
 }
 
 
 
-.modal::backdrop{
-    background-color: rgba(123, 115, 174, 0.75);
+.modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 footer {
