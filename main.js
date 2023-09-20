@@ -1,46 +1,104 @@
+const buttons = document.querySelectorAll("input[id^='btn']");
+const resultMsg = document.getElementById("resultMessage");
+const playerScoreField = document.getElementById("playerScoreField");
+const computerScoreField = document.getElementById("computerScoreField");
+const resetBtn = document.getElementById("reset-button");
+let playerScore = 0;
+let computerScore = 0;
+const modal = document.getElementById("modal");
+const closeBtn = document.getElementById("close-button");
 
-let numberOfRounds = 5;
+buttons.forEach(button => button.addEventListener("click", handleClick));
+resetBtn.addEventListener("click", resetGame);
+closeBtn.addEventListener("click", closeModal);
 
-function game(numberOfRounds) {
 
-    for (let i = 1; i <= numberOfRounds; i++) {
 
-        const playerSelection = prompt("Which do you choose: Rock, Paper, Scissors?")
-        console.log(`player selection: ${playerSelection}`);
+function handleClick(e) {
+    let playerSelection = e.target.dataset.name;
+    const computerSelection = getComputerChoice();
+    playGame(playerSelection, computerSelection);
+    isWinner();
+}
 
-        function getComputerChoice() {
-            let choices = ["Rock", "Paper", "Scissors"]
-            let index = Math.floor(Math.random() * choices.length);
+function getComputerChoice() {
+    let choices = ["rock", "paper", "scissors"];
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
 
-            return choices[index];
-        }
-        const computerSelection = getComputerChoice();
+function playGame(playerSelection, computerSelection) {
 
-        console.log(`computer selection: ${computerSelection}`);
+    if (playerSelection === computerSelection) {
+        resultMsg.textContent = `Computer selected ${computerSelection}.It's a draw.`;
+    } else if (
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    ) {
+        playerScore++;
+        playerScoreField.textContent = playerScore;
+        resultMsg.textContent = `You won! ${playerSelection.charAt(0).toUpperCase()}${playerSelection.slice(1)} beats ${computerSelection}.`
+    } else {
+        computerScore++;
+        computerScoreField.textContent = computerScore;
+        resultMsg.textContent = `You lost. ${computerSelection.charAt(0).toUpperCase()}${computerSelection.slice(1)} beats ${playerSelection}.`
+    }   
+}
 
-        if (playerSelection === null) {
-            console.log("Player cancelled the game.")
-            break;
-        } else if (!playerSelection) {
-            console.log(`Player input is not appropiate. Round ${i}.`)
-        } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-            console.log(`It's a draw. Round ${i}.`);
-        } else if (
-            (playerSelection.toLowerCase() === "rock" && computerSelection === "Scissors") ||
-            (playerSelection.toLowerCase() === "paper" && computerSelection === "Rock") ||
-            (playerSelection.toLowerCase() === "scissors" && computerSelection === "Paper")
-        ) {
-            console.log(`You won! ${playerSelection} beats ${computerSelection}. Round ${i}.`);
+function isWinner() {
+
+    if (playerScore === 5) {
+            if(computerScore === 4 || computerScore === 3) {
+                endMessage.textContent = "Almost got ya!";
+            } else {
+                endMessage.textContent = "Woah! Smooth one.";
+            }
+        modal.showModal();
+        buttons.forEach(button => button.disabled = true); 
+    } else if (computerScore === 5) {
+        if (playerScore === 4 || playerScore === 3){
+            endMessage.textContent = "You can't catch me!";
         } else {
-            console.log(`You lost. ${computerSelection} beats ${playerSelection}. Round ${i}.`)
+            endMessage.textContent = "Yo dawg! You just got busted.";
         }
-
-
+        modal.showModal();      
+        buttons.forEach(button =>button.disabled = true) ;
     }
 }
 
+function resetGame() {
+    if (playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreField.innerHTML = playerScore;
+        computerScoreField.innerHTML = computerScore;
+        buttons.forEach(button => button.disabled = false)
+        resultMsg.textContent = "";
+        modal.close();
+    }
+}
 
-game(numberOfRounds);
+function closeModal(e) {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreField.innerHTML = playerScore;
+    computerScoreField.innerHTML = computerScore;
+    buttons.forEach(button => button.disabled = false)
+    resultMsg.textContent = "";
+    modal.close();
+}
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.hasAttribute('open')) {
+      closeModal();
+    }
+  });
 
 
-alert("Play another game!")
+
+
+
+
+
+
+

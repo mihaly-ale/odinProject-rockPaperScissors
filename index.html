@@ -3,11 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Odin Project - Rock, Paper, Scissors</title>
-    <input type="text">
+    
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>Rock, Paper, Scissors</h1>
+            <h2>Get 5 points to win a game!</h2>
+            <!-- <hr> -->
+        </header>
+        <section class="game">
+            <div class="points">
+                <div>Player: <span id="playerScoreField">0</span></div>
+                <div>Computer: <span id="computerScoreField">0</span></div>
+            </div>
+            <div class="buttons">
+                <input type="image" class="game-buttons" id="btn-rock" data-name="rock" alt="rock" src="/images/rocks.png"/>
+                <input type="image" class="game-buttons" id="btn-paper" data-name="paper" alt="paper" src="/images/paper.png"/>
+                <input type="image" class="game-buttons" id="btn-scissors" data-name="scissors" alt="scissors" src="/images/scissors.png"/>                
+            </div>
+            <h2 id = resultMessage></h2>
+            <dialog class="modal" id="modal">
+                <p class="endMessage" id="endMessage">Well Done!</p>
+                <button class="reset-button" id="reset-button">"Just ... one ...  more ... turn"</button>
+                <button class="close-button" id="close-button">X</button>
+            </dialog>
+        </section>
+    </div>
     
+    <footer>
+        <p> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.</p>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>
+
+<!-- todos 
+-cretae modal for end message and rest buttons
+responsive mobile first
+
+-->
