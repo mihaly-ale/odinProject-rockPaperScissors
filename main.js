@@ -12,7 +12,7 @@ resetButton.addEventListener('click', resetGame);
 
 function handleClick(e) {
     console.log(e.target.dataset.name)
-    let playerSelection = e.target.innerHTML
+    let playerSelection = e.target.dataset.name;
     const computerSelection = getComputerChoice();
     playGame(playerSelection, computerSelection);
     isWinner();
@@ -37,7 +37,6 @@ function playGame(playerSelection, computerSelection) {
         playerScore++;
         playerScoreField.textContent = playerScore;
         resultMsg.textContent = `You won! ${playerSelection.charAt(0).toUpperCase()}${playerSelection.slice(1)} beats ${computerSelection}.`
-        // console.log(`The character at index 0   is '${anyString.charAt(0)}'`);
     } else {
         computerScore++;
         computerScoreField.textContent = computerScore;
@@ -50,10 +49,10 @@ function isWinner() {
 
     if (playerScore === 5) {
         resultMsg.textContent = "Well done mate!"
-        buttons.forEach(button => button.disabled = true)
+        buttons.forEach(button => button.disabled = true)   
     } else if (computerScore === 5) {
         resultMsg.textContent = "Better play an easier game? Huh!?"
-        buttons.forEach(button => button.disabled = true)
+        buttons.forEach(button =>button.disabled = true)   
     }
 
 }

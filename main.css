@@ -91,6 +91,12 @@ a {
     }
 }
 
+[id^="btn"]:disabled {
+    transform: scale(1);
+    opacity: 0.5;
+
+}
+
 h2[id="resultMessage"] {
     height: 2rem;
 }
