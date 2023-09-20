@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Odin Project - Rock, Paper, Scissors</title>
-    <input type="text">
+    
 </head>
 <body>
+    <header>
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>Get 5 points to win a game!</h2>
+        <hr>
+    </header>
+
+    <button id="btn-rock"><img src="/images/rocks.png" alt=""></button>
+    <button id="btn-paper"><img src="/images/paper.png" alt=""></button>
     
+    <button id="btn-scissors"><img src="/images/scissors.png" alt=""></button>
+    <div id="result">
+        <div class="points">
+            Player: <span id="playerScoreField">0</span>
+            Computer: <span id="computerScoreField">0</span>
+        </div>
+        <h2 id = resultMessage></h2>
+        <button class="reset" id="reset">Let's play another game!</button>
+    </div>
+    
+    <footer>
+        <div> Icons made by <a href="https://www.freepik.com" title="Freepik"> Freepik </a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com'</a></div>
+    </footer>
+    <script src="main.js"></script>
 </body>
 </html>
