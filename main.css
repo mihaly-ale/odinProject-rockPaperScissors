@@ -6,16 +6,6 @@
     margin: 0;
 }
 
-body {
-    background-color: rgb(50, 38, 128);
-    font-family: Arial, Helvetica, sans-serif;
-    color: aliceblue;
-    /*  to push down the footer */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 input[type^="image"] {
     max-width: 100%;
     height: auto;
@@ -34,63 +24,69 @@ a {
     }
 }
 
-.container {
-    /* display: flex;
-    flex-direction: column; */
-    margin: 0 auto;
+body {
     text-align: center;
+    background-color: rgb(50, 38, 128);
+    font-family: Arial, Helvetica, Cambria, sans-serif;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .header {
-    margin-top: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 2rem;
+    position: relative;
 
     & h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     & h2 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        font-weight: 400;
         padding-bottom: 2rem;
     }
 
     &:after {
         content: "";
-        left: 0;
-        bottom: 3rem;
-        width: 100vw;
-        display: block;
-        border-bottom: 1px solid aliceblue;
+        border-bottom: 1px solid rgb(240, 248, 255, .25);
+        width: 80%;
+        margin: 0 auto;
     }
 }
+
 
 .game {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .points {
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
-    margin-top: 4rem;
+    font-family: Cambria;
 
+    & span {
+        color: #c1e014;
+        font-size: 2.15rem;
+    }
 }
 
 .buttons {
     display: flex;
-    justify-content: center;;
-  
-    gap: 5rem;
-
-    @media (max-width: 750px) {  
-        display: grid;
-        place-items: center;
-        gap: 1.5rem;  
-    }
+    justify-content: space-around;
 }
 
 .game-buttons {
@@ -106,7 +102,6 @@ a {
     transform: scale(0.75);
     opacity: 0.5;
     cursor: default;
-
 }
 
 #resultMessage {
@@ -124,7 +119,6 @@ a {
     border: 3px solid rgb(50, 38, 128);
     border-radius: 5px;
     position: relative;
-
 }
 
 .reset-button {
@@ -159,13 +153,12 @@ a {
     padding: .75rem 1.25rem;
 }
 
-
-
 .modal::backdrop {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
 footer {
-    padding: 1rem;
+    font-size: .75rem;
     margin-top: auto;
+    padding: 1rem;
 }
